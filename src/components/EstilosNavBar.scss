@@ -1,0 +1,23 @@
+.nav{
+    margin: auto;
+    display: flex;
+    width: 90%;
+}
+
+.nav__ul{
+    display: flex;
+    margin-left: 30em;
+    .nav__li{
+        list-style: none;
+        margin: auto 20px;
+        padding: auto 20px;
+        .nav__a{
+            text-decoration: none;
+            color: black;
+        }
+    }
+}
+
+.nav__li:hover{
+    text-decoration: underline;
+}
