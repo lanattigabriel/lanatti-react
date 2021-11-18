@@ -1,6 +1,8 @@
 import React from 'react';
-import './EstilosNavBar.scss'
-function NavBar() {
+import './EstilosNavBar.scss';
+
+
+function NavBar({children}) {
     return(
         <nav className="nav">
             <div className="logo">
@@ -17,6 +19,7 @@ function NavBar() {
                     <a className="nav__a" href="/">Tres</a>
                 </li>
             </ul>
+        {children}
         </nav>
     )
 }
