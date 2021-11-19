@@ -1,8 +1,10 @@
 import React from 'react';
 import './EstilosNavBar.scss';
+// CartWidget
+import CartWidget from "../CartWidget/CartWidget"
 
 
-function NavBar({children}) {
+function NavBar() {
     return(
         <nav className="nav">
             <div className="logo">
@@ -19,7 +21,7 @@ function NavBar({children}) {
                     <a className="nav__a" href="/">Tres</a>
                 </li>
             </ul>
-        {children}
+            <CartWidget />
         </nav>
     )
 }
