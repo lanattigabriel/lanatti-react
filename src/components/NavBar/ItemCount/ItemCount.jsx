@@ -4,7 +4,7 @@ import { faPlusSquare } from '@fortawesome/free-solid-svg-icons';
 import { faMinusSquare } from '@fortawesome/free-solid-svg-icons';
 
 const ItemCount = ({stock, initial}) => {
-    const [cantidad, setCantidad] = useState(0);
+    const [cantidad, setCantidad] = useState(1);
 
     function sumar(){
         if (cantidad < stock) {
