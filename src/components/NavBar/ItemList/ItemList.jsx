@@ -1,11 +1,12 @@
 import React from 'react';
 import Item from '../Item/Item';
+import './itemList.scss'
 
-const ItemList = ({items = []}) => {
+const ItemList = ({item = []}) => {
     return(
-        <div>
-            {items.map((items, index) =>
-                <Item key={index} nombre={items.nombre} descripcion={items.descripcion}/>
+        <div className="itemList">
+            {item.map((item, index) =>
+                <Item key={index} item={item}/>
             )}            
         </div>
     )

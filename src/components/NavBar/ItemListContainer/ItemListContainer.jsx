@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import ItemCount from '../ItemCount/ItemCount';
 import ItemList from '../ItemList/ItemList';
+import './itemListContainer.scss';
 
 const productos = [
     {id: 1, name: 'Primer producto', descripcion: 'Este es el primer producto'},

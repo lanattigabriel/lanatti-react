@@ -1,10 +1,13 @@
 import React from 'react';
+import './item.scss'
 
 const Item = ({item}) => {
     return(
-        <div>
-            <h3>{item.name}</h3>
-            <p>{item.descripcion}</p>
+        <div className="itemCard">
+            <div className="itemCardInner">
+                <h3>{item.name}</h3>
+                <p>{item.descripcion}</p>
+            </div>
         </div>
     )
 }
