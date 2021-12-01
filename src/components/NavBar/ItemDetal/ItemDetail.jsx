@@ -4,8 +4,9 @@ const ItemDetail = ({producto}) => {
 
     return(
         <div>
+            <img width="5px" height="5px" src="" alt="" />
             <h3>{producto.name}</h3>
-            <p>{producto.descipcion}</p>
+            <p>{producto.descripcion}</p>
         </div>
     )
 }

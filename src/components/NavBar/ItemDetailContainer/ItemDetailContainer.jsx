@@ -28,7 +28,7 @@ const ItemDetailContainer = ({prodId = 1}) => {
     const [producto, setProducto] = useState(null);
 
     useEffect(() => {
-        let llamarPromesa = crearPromesa({prodId});
+        let llamarPromesa = crearPromesa(prodId);
 
         llamarPromesa.then((resuelve) => {
             setProducto(resuelve)
