@@ -4,7 +4,7 @@ const ItemDetail = ({producto}) => {
 
     return(
         <div>
-            <h3>{producto.id}</h3>
+            <h3>{producto.name}</h3>
             <p>{producto.descipcion}</p>
         </div>
     )

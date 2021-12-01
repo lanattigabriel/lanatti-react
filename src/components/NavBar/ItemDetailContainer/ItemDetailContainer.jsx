@@ -37,12 +37,17 @@ const ItemDetailContainer = ({prodId = 1}) => {
         }).finally(() => {
             console.log('Promesa finalizada')
         })
-    }, []);
+    }, [prodId]);
 
     return(
         <section>
             <div>
-                <ItemDetail producto={producto} />
+                {
+                    producto !== null ?
+                    <ItemDetail producto={producto} />
+                    :
+                    <span>CARGANDO...</span>
+                }
             </div>
         </section>
     )
