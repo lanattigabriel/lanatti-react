@@ -1,23 +1,34 @@
 .nav{
-    margin: auto;
-    display: flex;
-    width: 90%;
-}
+    width: 95%;
+    margin: 10px auto 30px auto;
+    padding: 20px 30px;
+    border-bottom: 1px solid black;
 
-.nav__ul{
     display: flex;
-    margin-left: 30em;
-    .nav__li{
-        list-style: none;
-        margin: auto 20px;
-        padding: auto 20px;
-        .nav__a{
+    justify-content: space-between;
+    align-items: center;
+    .logo{
+        display: flex;
+        align-items: center;
+        .logo__title{
             text-decoration: none;
             color: black;
+            font-size: 2rem;
         }
     }
 }
 
-.nav__li:hover{
+.categories{
+    margin-left: 25rem;
+    .categories__link{
+        margin: 3rem;
+        font-size: 20px;
+        list-style: none;
+        text-decoration: none;
+        color: black;
+    }
+}
+
+.categories__link:hover{
     text-decoration: underline;
 }

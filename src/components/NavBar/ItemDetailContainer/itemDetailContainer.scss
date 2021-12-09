@@ -1,6 +1,9 @@
-.itemListContainer{
+.itemDetailContainer{
     width: 90vw;
     margin: auto;
+
+    display: flex;
+    justify-content: center;
     .cargandoContainer{
         margin-top: 200px;
         .cargando{

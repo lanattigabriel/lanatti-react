@@ -19,7 +19,7 @@ const ItemCount = ({stock, initial}) => {
     };
 
     function onAdd() {
-        console.log(`Agregaste ${cantidad} productos`)
+        alert(`Agregaste ${cantidad} productos al carrito`)
     }
 
     return(

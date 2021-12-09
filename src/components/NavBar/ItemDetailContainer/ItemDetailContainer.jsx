@@ -1,12 +1,14 @@
 import React, {useState, useEffect} from 'react';
-import ItemDetail from '../ItemDetal/ItemDetail';
+import { useParams } from 'react-router-dom';
+import ItemDetail from '../ItemDetail/ItemDetail';
+import './itemDetailContainer.scss';
 
 const productos = [
-    {id: 1, name: 'Primer producto', descripcion: 'Este es el primer producto'},
-    {id: 2, name: 'Segundo producto', descripcion: 'Este es el segundo producto'},
-    {id: 3, name: 'Tercer producto', descripcion: 'Este es el tercer producto'},
-    {id: 4, name: 'Cuarto producto', descripcion: 'Este es el cuarto producto'},
-    {id: 5, name: 'Quinto producto', descripcion: 'Este es el quinto producto'},
+    {id: 1, name: 'Primer producto', descripcion: 'Este es el primer producto', precio: 200, stock: 5},
+    {id: 2, name: 'Segundo producto', descripcion: 'Este es el segundo producto', precio: 200, stock: 15},
+    {id: 3, name: 'Tercer producto', descripcion: 'Este es el tercer producto', precio: 200, stock: 10},
+    {id: 4, name: 'Cuarto producto', descripcion: 'Este es el cuarto producto', precio: 200, stock: 5},
+    {id: 5, name: 'Quinto producto', descripcion: 'Este es el quinto producto', precio: 200, stock: 5},
 ]
 
 const crearPromesa = (idProductoElegido) => {
@@ -23,12 +25,13 @@ const crearPromesa = (idProductoElegido) => {
     });
 };
 
-const ItemDetailContainer = ({prodId = 1}) => {
+const ItemDetailContainer = () => {
 
     const [producto, setProducto] = useState(null);
+    const { id } = useParams();
 
     useEffect(() => {
-        let llamarPromesa = crearPromesa(prodId);
+        let llamarPromesa = crearPromesa(Number(id));
 
         llamarPromesa.then((resuelve) => {
             setProducto(resuelve)
@@ -37,16 +40,18 @@ const ItemDetailContainer = ({prodId = 1}) => {
         }).finally(() => {
             console.log('Promesa finalizada')
         })
-    }, [prodId]);
+    }, [id]);
 
     return(
-        <section>
+        <section className="itemDetailContainer">
             <div>
                 {
                     producto !== null ?
                     <ItemDetail producto={producto} />
                     :
-                    <span>CARGANDO...</span>
+                    <div className="cargandoContainer">
+                        <span className="cargando">Cargando...</span>
+                    </div>
                 }
             </div>
         </section>
