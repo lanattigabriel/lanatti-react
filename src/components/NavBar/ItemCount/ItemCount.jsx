@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlusSquare } from '@fortawesome/free-solid-svg-icons';
 import { faMinusSquare } from '@fortawesome/free-solid-svg-icons';
 
-const ItemCount = ({stock, initial}) => {
+const ItemCount = ({stock, initial, onAdd}) => {
     const [cantidad, setCantidad] = useState(1);
 
     function sumar(){
@@ -18,10 +18,6 @@ const ItemCount = ({stock, initial}) => {
         }
     };
 
-    function onAdd() {
-        alert(`Agregaste ${cantidad} productos al carrito`)
-    }
-
     return(
         <>
         <div>
@@ -31,7 +27,7 @@ const ItemCount = ({stock, initial}) => {
         </div>
 
         <div>
-            <button onClick={onAdd} >Agregar al carrito</button>
+            <button onClick={() => onAdd(cantidad)} >Agregar al carrito</button>
         </div>
         </>
     )

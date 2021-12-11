@@ -4,6 +4,7 @@ import './App.css';
 import NavBar from './components/NavBar/NavBar/NavBar';
 import ItemListContainer from './components/NavBar/ItemListContainer/ItemListContainer';
 import ItemDetailContainer from './components/NavBar/ItemDetailContainer/ItemDetailContainer';
+import Cart from './components/NavBar/Cart/Cart';
 
 
 function App() {
@@ -20,6 +21,9 @@ function App() {
         </Route>
         <Route path='/detail/:id'>
           <ItemDetailContainer prodId={2} />
+        </Route>
+        <Route path='/cart'>
+          <Cart />
         </Route>
       </Switch>
     </div>
