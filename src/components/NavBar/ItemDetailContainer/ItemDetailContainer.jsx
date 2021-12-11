@@ -46,7 +46,7 @@ const ItemDetailContainer = () => {
         <section className="itemDetailContainer">
             <div>
                 {
-                    producto !== null ?
+                    producto ?
                     <ItemDetail producto={producto} />
                     :
                     <div className="cargandoContainer">
