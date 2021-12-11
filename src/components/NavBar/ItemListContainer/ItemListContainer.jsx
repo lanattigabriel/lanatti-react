@@ -80,6 +80,7 @@ const ItemListContainer = (props) => {
 
         // })()
 
+        setItem(null);
 
         let llamarPromesa = crearPromesa(categoryId);
 
