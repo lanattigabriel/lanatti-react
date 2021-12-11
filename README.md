@@ -1,3 +1,24 @@
+// Readme
+
+# Nombre
+E-Commerce realizado con React - Proyecto Final Lanatti
+
+## Descripción
+E-Commerce de productos simulados, con un array local, navegabilidad entre secciones de categorías y detalle de items. Cuenta con un contador de productos que trabajo con stock individual para cada producto y lleva a un cart para finalizar la compra un vez elegida la cantidad de productos.
+
+### Visuales
+
+<img src='./Animation.gif' alt='Gif demostrativo'></img>
+
+#### Instalacion
+El proyecto corre con ReactJs
+
+##### Estado del proyecto
+El proyecto está en estado de construcción
+
+// --------------------------------------------------------- //
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
