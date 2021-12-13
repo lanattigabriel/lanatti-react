@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './EstilosNavBar.scss';
 import { Link } from 'react-router-dom';
 // CartWidget
@@ -6,6 +6,9 @@ import CartWidget from "../CartWidget/CartWidget"
 //Font Awesome
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faAngleDown } from '@fortawesome/free-solid-svg-icons'
+import { getCategories } from '../Products/Products'
+
+
 
 const showList = () => {
     document.getElementsByClassName('categoriesLinkUl')[0].classList.toggle('visibility')
@@ -13,6 +16,16 @@ const showList = () => {
 
 
 function NavBar() {
+
+    const [categories, setCategories] = useState([]);
+
+    useEffect(() => {
+        getCategories().then(categoriesOk => {
+            setCategories(categoriesOk)
+        })
+    }, [])
+
+
     return(
         <nav className="nav">
             <div className="logo">
@@ -23,12 +36,11 @@ function NavBar() {
                 <Link className="navItems__link" to={'/detail'}>Detail</Link>
                 <button className='categories__button'>Categories</button>
                 <ul className='categoriesLinkUl'>
-                    <li className='categoriesLinkLi'>
-                        <Link className='categoriesLink' to={'/category/1'}>Categoría 1</Link>
-                    </li>
-                    <li className='categoriesLinkLi'>
-                        <Link className='categoriesLink' to={'/category/2'}>Categoría 2</Link>
-                    </li>
+                    {
+                        categories.map(cat => <li key={cat.id} className='categoriesLinkLi'>
+                                                <Link to={`/category/${cat.id}`} className='categoriesLink'>{cat.description}</Link>
+                                            </li>)
+                    }
                 </ul>
             </div>
             <FontAwesomeIcon className='angle' icon={faAngleDown} style={{cursor:'pointer'}} onClick={showList}/>

@@ -2,14 +2,8 @@ import React, {useState, useEffect} from 'react';
 import { useParams } from 'react-router-dom';
 import ItemDetail from '../ItemDetail/ItemDetail';
 import './itemDetailContainer.scss';
+import { productos } from '../Products/Products';
 
-const productos = [
-    {id: 1, name: 'Primer producto', descripcion: 'Este es el primer producto', precio: 200, stock: 5},
-    {id: 2, name: 'Segundo producto', descripcion: 'Este es el segundo producto', precio: 200, stock: 15},
-    {id: 3, name: 'Tercer producto', descripcion: 'Este es el tercer producto', precio: 200, stock: 10},
-    {id: 4, name: 'Cuarto producto', descripcion: 'Este es el cuarto producto', precio: 200, stock: 5},
-    {id: 5, name: 'Quinto producto', descripcion: 'Este es el quinto producto', precio: 200, stock: 5},
-]
 
 const crearPromesa = (idProductoElegido) => {
     return new Promise((resolve, reject) => {
