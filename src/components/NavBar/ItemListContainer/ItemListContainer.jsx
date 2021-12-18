@@ -26,39 +26,6 @@ const ItemListContainer = (props) => {
     
     
     useEffect(() => {
-        
-        // const getProductsByCategory = () => {
-            // productos.filter((producto) => {
-            //     return producto.category === categoryId
-            // }
-        // )}
-            
-        // console.log(productos[0].category)
-        // console.log(categoryId);
-
-        // if (categoryId){
-    
-        //     // Acá hay un error ya que el console.log(productosCategorizados) devuelve undefined.
-        //     const productosCategorizados = getProductsByCategory(categoryId);
-        //     console.log(productosCategorizados)
-        //     setItem(productosCategorizados)
-
-        // } else {
-        //     setItem(productos)
-        // }
-
-        // ( async () => {
-        //     if (categoryId !== undefined){
-    
-        //         const productosCategorizados = await getProductsByCategory(categoryId);
-        //         console.log(productosCategorizados)
-        //         setItem(productosCategorizados)
-    
-        //     } else {
-        //         setItem(productos)
-        //     }
-
-        // })()
 
         setItem(null);
 
@@ -66,13 +33,10 @@ const ItemListContainer = (props) => {
 
         llamarPromesa.then((datosObtenidos) => {
             setItem(datosObtenidos)
-            // console.log(datosObtenidos)
         }).finally(() => {
             console.log('Hecho')
         })
     }, [categoryId]);
-
-    // console.log(item)
 
     return(
         <section className="itemListContainer">

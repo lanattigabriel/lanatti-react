@@ -1,16 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './itemDetail.scss';
 import ItemCount from '../ItemCount/ItemCount';
-import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import useCartContext from '../Context/CartContext';
 
-const ItemDetail = ({producto}) => {
+const ItemDetail = ( {producto} ) => {
 
     const [cantidadProd, setCantidadProd] = useState(0);
+    const { addItem, removeItem } = useCartContext();
 
-    function onAdd(cantProd) {
-        setCantidadProd(cantProd);
-        alert(`Agregaste ${cantProd} items al carrito`)
+    function onAdd(qty) {
+        setCantidadProd(qty);
+        addItem(producto, qty);
+        alert(`Agregaste ${qty} items al carrito`);
     }
 
     return(
@@ -24,7 +26,10 @@ const ItemDetail = ({producto}) => {
 
             {
                 cantidadProd?
+                <>
                 <Link to={'/cart'}>Terminar compra</Link>
+                <button onClick={removeItem(producto.id)}>Quitar producto</button>
+                </>
                 :
                 <ItemCount 
                     stock={producto.stock} 
