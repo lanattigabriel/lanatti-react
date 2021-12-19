@@ -15,6 +15,14 @@ const ItemDetail = ( {producto} ) => {
         alert(`Agregaste ${qty} items al carrito`);
     }
 
+    function onRemove(producto) {
+        let itemRemoved = removeItem(producto)
+        setCantidadProd(itemRemoved)
+    }
+
+    console.log(cantidadProd)
+
+
     return(
         <div className="itemDetail">
             <div className="itemDetailInner">
@@ -28,13 +36,14 @@ const ItemDetail = ( {producto} ) => {
                 cantidadProd?
                 <>
                 <Link to={'/cart'}>Terminar compra</Link>
-                <button onClick={removeItem(producto.id)}>Quitar producto</button>
+                <button onClick={() => {onRemove(producto)}}>Quitar producto</button>
                 </>
                 :
                 <ItemCount 
                     stock={producto.stock} 
                     initial={1} 
                     onAdd={onAdd}
+                    onRemove={onRemove}
                 />
             }
         </div>

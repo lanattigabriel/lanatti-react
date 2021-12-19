@@ -47,7 +47,9 @@ export const CartContextProvider = ({children}) => {
         })
         console.log(filteredCart)
 
-    setItemsCart([...filteredCart]);
+        itemsCart
+            ? setItemsCart([...filteredCart])
+            : setItemsCart();
    }
 
    const clearCart = () => {
