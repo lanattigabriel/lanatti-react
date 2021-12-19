@@ -33,7 +33,6 @@ function NavBar() {
             </div>
             <div className="navItems">
                 <Link className="navItems__link" to={'/'}>List</Link>
-                <Link className="navItems__link" to={'/detail'}>Detail</Link>
                 <button className='categories__button'>Categories</button>
                 <ul className='categoriesLinkUl'>
                     {
