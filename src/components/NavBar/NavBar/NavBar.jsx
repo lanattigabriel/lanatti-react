@@ -7,6 +7,7 @@ import CartWidget from "../CartWidget/CartWidget"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faAngleDown } from '@fortawesome/free-solid-svg-icons'
 import { getCategories } from '../Products/Products'
+import useCartContext from '../Context/CartContext';
 
 
 
@@ -16,6 +17,8 @@ const showList = () => {
 
 
 function NavBar() {
+
+    const { itemsCart, getQtyCart } = useCartContext();
 
     const [categories, setCategories] = useState([]);
 
@@ -33,17 +36,28 @@ function NavBar() {
             </div>
             <div className="navItems">
                 <Link className="navItems__link" to={'/'}>List</Link>
-                <button className='categories__button'>Categories</button>
-                <ul className='categoriesLinkUl'>
-                    {
-                        categories.map(cat => <li key={cat.id} className='categoriesLinkLi'>
-                                                <Link to={`/category/${cat.id}`} className='categoriesLink'>{cat.description}</Link>
-                                            </li>)
-                    }
-                </ul>
+                <div className="categories">
+                    <button className='categories__title'>Categories</button>
+                    <div className="categories__displayMenu">
+                        <ul className='categoriesLinkUl'>
+                            {
+                                categories.map(cat => <li key={cat.id} className='categoriesLinkLi'>
+                                                        <Link to={`/category/${cat.id}`} className='categoriesLink'>{cat.description}</Link>
+                                                    </li>)
+                            }
+                        </ul>
+                    </div>
+                    <FontAwesomeIcon className='angle' icon={faAngleDown} style={{cursor:'pointer'}} onClick={showList}/>
+                </div>
             </div>
-            <FontAwesomeIcon className='angle' icon={faAngleDown} style={{cursor:'pointer'}} onClick={showList}/>
-            <CartWidget />
+
+            <div>
+                { itemsCart.length > 0 &&
+                    <Link to={'/Cart'}>
+                        <CartWidget qty={getQtyCart()} />
+                    </Link>
+                }
+            </div>
         </nav>
     )
 }

@@ -35,8 +35,15 @@ const ItemDetail = ( {producto} ) => {
             {
                 cantidadProd?
                 <>
-                <Link to={'/cart'}>Terminar compra</Link>
-                <button onClick={() => {onRemove(producto)}}>Quitar producto</button>
+                <Link to={'/cart'}>
+                    <button>Terminar compra</button>
+                </Link>
+                <div>
+                    <button onClick={() => {onRemove(producto)}}>Quitar producto</button>
+                    <Link to={'/'}>
+                        <button>Seguir comprando</button>
+                    </Link>
+                </div>
                 </>
                 :
                 <ItemCount 

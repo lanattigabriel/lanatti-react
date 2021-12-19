@@ -5,20 +5,15 @@ import "./CartWidget.scss"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faShoppingCart } from '@fortawesome/free-solid-svg-icons'
 
-import useCartContext from '../Context/CartContext';
 
-
-function CartWidget() {
-    const { getQtyCart } = useCartContext();
+function CartWidget({qty = 0}) {
 
     return(
         <div className="cartWidgetContainer">
-            <FontAwesomeIcon icon={faShoppingCart} className="cart" />
-            {getQtyCart() > 0 && 
-                <div>
-                    <p className="cartCount">{getQtyCart()}</p>
-                </div>
-            }
+            <FontAwesomeIcon icon={faShoppingCart} className="cart" /> 
+            <div>
+                <p className="cartCount">{qty}</p>
+            </div>
         </div>
         
 

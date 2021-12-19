@@ -10,8 +10,9 @@ const Item = ({item}) => {
                 <h3>{item.name}</h3>
                 <p>{item.descripcion}</p>
                 <p>$ {item.precio}</p>
-                <p>Cantidad: {item.qty}</p>
-                <Link to={pathItem}>Ver detalle</Link>
+                <Link to={pathItem}>
+                    <button>Ver detalle</button>
+                </Link>
             </div>
         </div>
     )
