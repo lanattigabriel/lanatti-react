@@ -12,7 +12,7 @@ import useCartContext from '../Context/CartContext';
 
 
 const showList = () => {
-    document.getElementsByClassName('categoriesLinkUl')[0].classList.toggle('visibility')
+    document.getElementsByClassName('categoriesUl')[0].classList.toggle('visibility')
 }
 
 
@@ -30,28 +30,20 @@ function NavBar() {
 
 
     return(
+        <>
         <nav className="nav">
+
             <div className="logo">
                 <Link to={'/'} className="logo__title">Brand</Link>
             </div>
+
             <div className="navItems">
                 <Link className="navItems__link" to={'/'}>List</Link>
-                <div className="categories">
-                    <button className='categories__title'>Categories</button>
-                    <div className="categories__displayMenu">
-                        <ul className='categoriesLinkUl'>
-                            {
-                                categories.map(cat => <li key={cat.id} className='categoriesLinkLi'>
-                                                        <Link to={`/category/${cat.id}`} className='categoriesLink'>{cat.description}</Link>
-                                                    </li>)
-                            }
-                        </ul>
-                    </div>
-                    <FontAwesomeIcon className='angle' icon={faAngleDown} style={{cursor:'pointer'}} onClick={showList}/>
-                </div>
+                <button className='navItems__link'>Categories</button>
+                <FontAwesomeIcon className='angle' icon={faAngleDown} style={{cursor:'pointer'}} onClick={showList}/>              
             </div>
 
-            <div>
+            <div className='cartWidget'>
                 { itemsCart.length > 0 &&
                     <Link to={'/Cart'}>
                         <CartWidget qty={getQtyCart()} />
@@ -59,6 +51,15 @@ function NavBar() {
                 }
             </div>
         </nav>
+
+        <ul className='categoriesUl'>
+        {
+            categories.map(cat => <li key={cat.id} className='categoriesLi'>
+                                    <Link to={`/category/${cat.id}`} className='categoriesLink'>{cat.description}</Link>
+                                </li>)
+        }
+        </ul>
+    </>
     )
 }
 
