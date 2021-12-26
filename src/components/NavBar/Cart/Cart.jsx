@@ -1,24 +1,42 @@
 import React from 'react';
 import useCartContext from '../Context/CartContext';
 import './cart.scss';
-import { db } from '../../../services/firebase/firebase'
-import { addDoc, collection } from 'firebase/firestore';
+// import { db } from '../../../services/firebase/firebase'
+// import { addDoc, collection } from 'firebase/firestore';
 
 
 
 const Cart = ({item}) => {
+
+    // const [processingOrder, setProcessingOrder] = useState(false)
+    // const [contact, setContact] = useState({
+    //     name: '',
+    //     phone: '',
+    //     email: ''
+    // })
     
-    const { removeItem, getQtyCart } = useCartContext();
+    const { removeItem } = useCartContext();
 
-    const objOrder = {
-        buyer: { name: 'Juan', phone: '111', email: 'juan@123.com' },
-        item: [{item}],
-        total: getQtyCart()
-    }
+    // const confirmOrder = () => {
+    //     setProcessingOrder(true);
+        
+    //     const objOrder = {
+    //         buyer: { name: 'Juan', phone: '111', email: 'juan@123.com' },
+    //         item: [{item}],
+    //         total: getQtyCart()
+    //     }
 
-    addDoc(collection(db, 'orders'), objOrder).then(({ id }) => {
-        console.log(id)
-    })
+    //     setTimeout(() => {
+    //         clearCart()
+    //         setProcessingOrder(false)
+    //     }, 1000)
+
+    //     addDoc(collection(db, 'orders'), objOrder).then(({ id }) => {
+    //         console.log(id)
+    //     })
+    // }
+
+
     
     return(
         <div className="itemCart">
@@ -29,17 +47,7 @@ const Cart = ({item}) => {
                 <p>Cantidad: {item.qty}</p>
                 <span>Precio total: ${item.precio * item.qty}</span>
             </div>
-            <form>
-                <label htmlFor="name">Nombre:</label>
-                <input type="text" name="name" id="name" />
-                <label htmlFor="phone">Telefono:</label>
-                <input type="text" name="phone" id="phone" />
-                <label htmlFor="email">Email:</label>
-                <input type="email" name="email" id="email" />
-                <input className="buttonCart" type="submit" id="submit" />
-            </form>
             <button className='buttonCart' onClick={() => {removeItem(item)}}>Quitar producto</button>
-            <button className="buttonCart">Confirmar compra</button>
         </div>
     )    
 }
