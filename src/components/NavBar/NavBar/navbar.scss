@@ -1,12 +1,15 @@
 .nav{
-    margin: 20px auto;
+    margin: 0px auto;
     width: 95%;
     display: flex;
+    background-color: rgb(65, 110, 207);
+    box-shadow: 10px 10px 10px rgb(105, 102, 102);
     .logo{
-        margin: auto 10px;
+        margin: auto 50px;
         .logo__title{
-            color: black;
-            font-size: 30px;
+            color: white;
+            font-family: fantasy;
+            font-size: 50px;
             text-decoration: none;
             
         }
@@ -15,18 +18,21 @@
         margin: auto;
         padding: 10px;
         display: flex;
+        list-style: none;
+        .navItems__li{
+            margin: 15px;
+        }
         .navItems__link{
-            color: black;
+            font-family: sans-serif;
+            color: white;
             background: none;
             border: none;
             text-decoration: none;
             font-size: 20px;
             margin: auto;
+            margin-left: 100px;
             width: 200px;
         }
-    }
-    .cartWidget{
-        justify-self: flex-end;
     }
 }
 

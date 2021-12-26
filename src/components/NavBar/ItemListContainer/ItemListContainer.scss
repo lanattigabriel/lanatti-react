@@ -1,10 +1,17 @@
 .itemListContainer{
     width: 90vw;
     margin: auto;
+    .listTitle{
+        color: rgb(64, 104, 192);
+        font-family: sans-serif;
+    }
     .cargandoContainer{
         margin-top: 200px;
+        margin-bottom: 100vh;
         .cargando{
             font-size: 50px;
+            font-family: sans-serif;
+            color: rgb(64, 104, 192);
         }
     }
 }

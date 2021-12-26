@@ -6,8 +6,11 @@
     justify-content: center;
     .cargandoContainer{
         margin-top: 200px;
+        margin-bottom: 100vh;
         .cargando{
             font-size: 50px;
+            font-family: sans-serif;
+            color: rgb(64, 104, 192);
         }
     }
 }

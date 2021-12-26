@@ -1,11 +1,27 @@
 .itemCard{
     width: 18rem;
-    height: 20rem;
+    height: 25rem;
     margin: 2rem;
     padding: 2rem;
+    background-color: rgb(64, 104, 192);
     box-shadow: 2px 2px 8px;
     .itemCardInner{
         margin: auto;
+        color: white;
+        font-family: sans-serif;
+        img{
+            width: 300px;
+            height: 200px;
+        }
+        .button{
+            border: none;
+            padding: 8px;
+            font-size: 15px;
+            background-color: rgb(243, 170, 102);
+            color: rgb(64, 104, 192);
+            border-radius: 10px;
+            cursor: pointer;
+        }
     }
 }
 

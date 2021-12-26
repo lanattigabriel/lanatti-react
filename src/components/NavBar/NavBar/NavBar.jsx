@@ -1,19 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import './EstilosNavBar.scss';
+import './navbar.scss';
 import { Link } from 'react-router-dom';
 // CartWidget
 import CartWidget from "../CartWidget/CartWidget"
-//Font Awesome
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faAngleDown } from '@fortawesome/free-solid-svg-icons'
-import { getCategories } from '../Products/Products'
 import useCartContext from '../Context/CartContext';
+import { db } from '../../../services/firebase/firebase';
+import { collection, getDocs } from 'firebase/firestore';
 
-
-
-const showList = () => {
-    document.getElementsByClassName('categoriesUl')[0].classList.toggle('visibility')
-}
 
 
 function NavBar() {
@@ -23,8 +16,12 @@ function NavBar() {
     const [categories, setCategories] = useState([]);
 
     useEffect(() => {
-        getCategories().then(categoriesOk => {
-            setCategories(categoriesOk)
+        getDocs(collection(db, 'categories')).then((querySnapshot) => {
+            const categories = querySnapshot.docs.map(doc => {
+                return{ id: doc.id, ...doc.data() }
+            })
+            console.log(categories)
+            setCategories(categories)
         })
     }, [])
 
@@ -38,12 +35,15 @@ function NavBar() {
             </div>
 
             <div className="navItems">
-                <Link className="navItems__link" to={'/'}>List</Link>
-                <button className='navItems__link'>Categories</button>
-                <FontAwesomeIcon className='angle' icon={faAngleDown} style={{cursor:'pointer'}} onClick={showList}/>              
+                <Link className="navItems__link" to={'/'}>Lista</Link>
+                {
+                    categories.map(cat => <li className='navItems__li' key={cat.id}>
+                                                <Link to={`/category/${cat.id}`} className='navItems__link'>{cat.description}</Link>
+                                            </li>)
+                }
             </div>
 
-            <div className='cartWidget'>
+            <div>
                 { itemsCart.length > 0 &&
                     <Link to={'/Cart'}>
                         <CartWidget qty={getQtyCart()} />
@@ -51,14 +51,6 @@ function NavBar() {
                 }
             </div>
         </nav>
-
-        <ul className='categoriesUl'>
-        {
-            categories.map(cat => <li key={cat.id} className='categoriesLi'>
-                                    <Link to={`/category/${cat.id}`} className='categoriesLink'>{cat.description}</Link>
-                                </li>)
-        }
-        </ul>
     </>
     )
 }

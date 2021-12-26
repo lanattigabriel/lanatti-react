@@ -26,7 +26,7 @@ const ItemDetail = ( {producto} ) => {
     return(
         <div className="itemDetail">
             <div className="itemDetailInner">
-                <img className="itemDetailImg" src="" alt="imagen del producto" />
+                <img className="itemDetailImg" src={producto.imgUrl} alt={producto.descripcion} />
                 <h3>{producto.name}</h3>
                 <p>{producto.descripcion}</p>
                 <p>El precio es de: ${producto.precio}</p>
@@ -36,12 +36,12 @@ const ItemDetail = ( {producto} ) => {
                 cantidadProd?
                 <>
                 <Link to={'/cart'}>
-                    <button>Terminar compra</button>
+                    <button className='botonCompra'>Terminar compra</button>
                 </Link>
                 <div>
-                    <button onClick={() => {onRemove(producto)}}>Quitar producto</button>
+                    <button className='botonCompra' onClick={() => {onRemove(producto)}}>Quitar producto</button>
                     <Link to={'/'}>
-                        <button>Seguir comprando</button>
+                        <button className='botonCompra'>Seguir comprando</button>
                     </Link>
                 </div>
                 </>

@@ -2,22 +2,9 @@ import React, {useState, useEffect} from 'react';
 import { useParams } from 'react-router-dom';
 import ItemDetail from '../ItemDetail/ItemDetail';
 import './itemDetailContainer.scss';
-import { productos } from '../Products/Products';
+import { db } from '../../../services/firebase/firebase';
+import { getDoc, doc } from 'firebase/firestore';
 
-
-const crearPromesa = (idProductoElegido) => {
-    return new Promise((resolve, reject) => {
-        setTimeout(() => {
-            const productoElegido = productos.find((producto) => {
-                return producto.id === idProductoElegido
-            });
-
-            productoElegido
-                ? resolve(productoElegido)
-                : reject ('No se encuentra el producto')
-        }, 500);
-    });
-};
 
 const ItemDetailContainer = () => {
 
@@ -25,14 +12,9 @@ const ItemDetailContainer = () => {
     const { id } = useParams();
 
     useEffect(() => {
-        let llamarPromesa = crearPromesa(Number(id));
-
-        llamarPromesa.then((resuelve) => {
-            setProducto(resuelve)
-        }).catch((noResuelve) => {
-            console.log(noResuelve)
-        }).finally(() => {
-            console.log('Promesa finalizada')
+        getDoc(doc(db, 'productos', id)).then((querySnapshot) => {
+            const product = { id: querySnapshot.id, ...querySnapshot.data()}
+            setProducto(product)
         })
     }, [id]);
 

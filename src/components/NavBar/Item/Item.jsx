@@ -7,11 +7,12 @@ const Item = ({item}) => {
     return(
         <div className="itemCard">
             <div className="itemCardInner">
+                <img src={item.imgUrl} alt={item.descripcion} />
                 <h3>{item.name}</h3>
                 <p>{item.descripcion}</p>
                 <p>$ {item.precio}</p>
                 <Link to={pathItem}>
-                    <button>Ver detalle</button>
+                    <button className='button'>Ver detalle</button>
                 </Link>
             </div>
         </div>

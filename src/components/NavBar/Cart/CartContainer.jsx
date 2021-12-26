@@ -28,7 +28,7 @@ const CartContainer = () => {
                         <Cart key={item.id} item={item} />
                     )
                 )}
-                <button onClick={clearCart}>Vaciar carrito</button>
+                <button className='vaciarCarrito' onClick={clearCart}>Vaciar carrito</button>
                 </div>
             </div>
             )

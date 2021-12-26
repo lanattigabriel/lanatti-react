@@ -1,15 +1,14 @@
 
 export const productos = [
-    {id: 1, name: 'Primer producto', descripcion: 'Este es el primer producto', precio: 200, stock: 10, category: '1'},
-    {id: 2, name: 'Segundo producto', descripcion: 'Este es el segundo producto', precio: 200, stock: 5, category: '1'},
-    {id: 3, name: 'Tercer producto', descripcion: 'Este es el tercer producto', precio: 200, stock: 15, category: '1'},
-    {id: 4, name: 'Cuarto producto', descripcion: 'Este es el cuarto producto', precio: 200, stock: 20, category: '2'},
-    {id: 5, name: 'Quinto producto', descripcion: 'Este es el quinto producto', precio: 200, stock: 5, category: '2'},
+    {id: 1, imgUrl: './images/hombre1.jpg', name: 'Zapatillas Hombre 1', descripcion: 'Zapatillas de hombre color negro', precio: 5000, stock: 10, category: 'Hombre'},
+    {id: 2, imgUrl:'./images/hombre2.jpg', name: 'Zapatillas Hombre 2', descripcion: 'Zapatillas de hombre color blanco', precio: 6000, stock: 5, category: 'Hombre'},
+    {id: 3, imgUrl:'./images/mujer1.jpg', name: 'Zapatillas Mujer 1', descripcion: 'Zapatillas de mujer color blanco', precio: 8000, stock: 15, category: 'Mujer'},
+    {id: 4, imgUrl:'./images/mujer2.jpg', name: 'Zapatillas Mujer 2', descripcion: 'Zapatillas de mujer color dorado', precio: 10000, stock: 20, category: 'Mujer'}
 ]
 
 const categories = [
-    {id: '1', description: 'Categoria 1'},
-    {id: '2', description: 'Categoria 2'}
+    {id: 'Hombre', description: 'Hombre'},
+    {id: 'Mujer', description: 'Mujer'}
 ]
 
 export const getCategories = () => {

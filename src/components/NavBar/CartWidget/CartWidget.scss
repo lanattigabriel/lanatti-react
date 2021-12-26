@@ -2,16 +2,18 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    color: white;
 }
 
 .cart{
     font-size: 25px;
-    margin-left: 500px;
-    margin-top: 25px;
+    margin-right: 20px;
 }
 
 .cartCount{
-    color: black;
+    color: white;
     font-size: 25px;
-    margin: 35px 8px 10px;
+    text-decoration: underline;
+    margin-right: 100px;
+    
 }
