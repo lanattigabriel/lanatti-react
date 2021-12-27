@@ -1,6 +1,6 @@
 .itemCart{
     width: 18rem;
-    height: 25rem;
+    height: 32rem;
     margin: 2rem;
     padding: 2rem;
     box-shadow: 2px 2px 8px;
@@ -8,6 +8,11 @@
     .itemCartInner{
         margin: auto;
         color: white;
+        .cartImg{
+            width: 300px;
+            height: 200px;
+            margin-bottom: 2rem;
+        }
     }
     .buttonCart{
         border: none;
@@ -21,13 +26,3 @@
     }
 }
 
-.vaciarCarrito{
-    border: none;
-    padding: 8px;
-    font-size: 15px;
-    color: rgb(243, 170, 102);
-    background-color: rgb(64, 104, 192);
-    border-radius: 10px;
-    margin-bottom: 100vh;
-    cursor: pointer;
-}

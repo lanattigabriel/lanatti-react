@@ -1,4 +1,28 @@
+.cartContainerBody{
+    height: 100vh;
+}
+
+.cartContainerTitle{
+    color: rgb(64, 104, 192);
+}
+
 .cartContainer{
     display: flex;
     justify-content: center;
+}
+
+.buttonCart{
+    border: none;
+    padding: 8px;
+    margin: 10px ;
+    font-size: 15px;
+    color: rgb(243, 170, 102);
+    background-color: rgb(64, 104, 192);
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.noItems{
+    font-size: 25px;
+    color: rgb(64, 104, 192);
 }
