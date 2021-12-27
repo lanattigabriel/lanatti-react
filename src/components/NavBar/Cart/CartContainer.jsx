@@ -10,13 +10,13 @@ const CartContainer = () => {
 
     const { itemsCart, getQtyCart, clearCart } = useCartContext();
     const [processingOrder, setProcessingOrder] = useState(false)
-
+    
     const confirmOrder = () => {
         setProcessingOrder(true);
         
         const objOrder = {
             buyer: { name: 'Juan', phone: '111', email: 'juan@123.com' },
-            item: [{itemsCart}],
+            item: itemsCart,
             total: getQtyCart()
         }
         
@@ -24,10 +24,11 @@ const CartContainer = () => {
             console.log(id)
         })
         
+        console.log(itemsCart)
         setTimeout(() => {
             clearCart()
             setProcessingOrder(false)
-        }, 100)
+        }, 50)
 
     }
 
