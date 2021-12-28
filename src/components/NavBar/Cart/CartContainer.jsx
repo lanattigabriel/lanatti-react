@@ -4,7 +4,7 @@ import Cart from './Cart'
 import { Link } from 'react-router-dom';
 import './cartContainer.scss'
 import { db } from '../../../services/firebase/firebase'
-import { addDoc, collection } from 'firebase/firestore';
+import { addDoc, collection, Timestamp } from 'firebase/firestore';
 
 const CartContainer = () => {
 
@@ -12,45 +12,40 @@ const CartContainer = () => {
     const [processingOrder, setProcessingOrder] = useState(false);
     const [orderChecked, setOrderChecked] = useState(false);
     const [orderId, setOrderId] = useState('');
+    const [buyer, setBuyer] = useState({
+        name: '',
+        phone: '',
+        email: ''
+    });
     
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        const {name, value} = e.target
+        setBuyer(
+            prevState => ({
+                ...prevState,
+                [name]: value
+            })
+        )
+        console.log(buyer)
+
+    }
+
     const confirmOrder = () => {
         setProcessingOrder(true);
         setOrderChecked(true);
         
         const objOrder = {
-            buyer: { name: 'Juan', phone: '111', email: 'juan@123.com' },
+            buyer: {buyer},
             item: itemsCart,
-            total: getQtyCart()
+            total: getQtyCart(),
+            date: Timestamp.fromDate(new Date())
         }
-        
-        // function prueba (id){
-        //     console.log('id prueba')
-        //     console.log(id)
-        //     console.log('id prueba')
-        //    getDoc(doc(db, 'orders', id)).then((querySnapshot) => {
-        //        console.log(querySnapshot)
-        //        const orderId = {querySnapshot}
-        //        setOrderId(orderId)
-        //    })
-        // }
 
         addDoc(collection(db, 'orders'), objOrder).then(({ id }) => {
             console.log(id)
             setOrderId(id)
-        //    prueba(id) 
         })
-
-        // setTimeout(() => {
-            // function prueba (id){
-            //     console.log(id)
-            //    getDoc(doc(db, 'orders', id)).then((querySnapshot) => {
-            //        console.log(querySnapshot)
-            //        const orderId = {querySnapshot}
-            //        setOrderId(orderId)
-            //    })
-            // }
-         
-        // }, 500)
         
         console.log(itemsCart)
         setTimeout(() => {
@@ -60,9 +55,21 @@ const CartContainer = () => {
 
     }
 
+
     return(
         <div className='cartContainerBody'>
             <h1 className='cartContainerTitle'>Cart</h1>
+            <div className="formContainer">
+                <form className='cartForm' onSubmit={handleSubmit}>
+                <label className='cartLabel' htmlFor="name">Nombre:</label>
+                <input className='cartInput' type="text" id='name' name='name' />
+                <label className='cartLabel' htmlFor="phone">Teléfono:</label>
+                <input className='cartInput' type="text" id='phone' name='phone' />
+                <label className='cartLabel' htmlFor="email">Email:</label>
+                <input className='cartInput' type="email" id='email' name='email' />
+                <input className='buttonCart' type="submit" />
+            </form>
+            </div>
             <div className="cartContainer">
                 { itemsCart.length > 0 
                     ?
