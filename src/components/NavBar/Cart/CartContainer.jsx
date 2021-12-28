@@ -4,7 +4,7 @@ import Cart from './Cart'
 import { Link } from 'react-router-dom';
 import './cartContainer.scss'
 import { db } from '../../../services/firebase/firebase'
-import { addDoc, collection, getDoc, doc } from 'firebase/firestore';
+import { addDoc, collection } from 'firebase/firestore';
 
 const CartContainer = () => {
 
@@ -23,22 +23,40 @@ const CartContainer = () => {
             total: getQtyCart()
         }
         
+        // function prueba (id){
+        //     console.log('id prueba')
+        //     console.log(id)
+        //     console.log('id prueba')
+        //    getDoc(doc(db, 'orders', id)).then((querySnapshot) => {
+        //        console.log(querySnapshot)
+        //        const orderId = {querySnapshot}
+        //        setOrderId(orderId)
+        //    })
+        // }
+
         addDoc(collection(db, 'orders'), objOrder).then(({ id }) => {
             console.log(id)
+            setOrderId(id)
+        //    prueba(id) 
         })
 
-        setTimeout(() => {
-            getDoc(doc(db, 'orders', doc)).then((querySnapshot) => {
-                const orderId = {querySnapshot}
-                setOrderId(orderId)
-            })
-        }, 500)
+        // setTimeout(() => {
+            // function prueba (id){
+            //     console.log(id)
+            //    getDoc(doc(db, 'orders', id)).then((querySnapshot) => {
+            //        console.log(querySnapshot)
+            //        const orderId = {querySnapshot}
+            //        setOrderId(orderId)
+            //    })
+            // }
+         
+        // }, 500)
         
         console.log(itemsCart)
         setTimeout(() => {
-            clearCart()
+            // clearCart()
             setProcessingOrder(false)
-        }, 2000)
+        }, 8000)
 
     }
 
@@ -63,8 +81,8 @@ const CartContainer = () => {
                             </div>
                             :
                             <div>
-                                <h1>Compra exitosa</h1>
-                                <span>Nro de orden: {orderId}</span>
+                                <h1 className='compraExitosa'>Compra exitosa</h1>
+                                <span className='orderNum'>Nro de orden: {orderId}</span>
                             </div>
                         }
                     </div>
