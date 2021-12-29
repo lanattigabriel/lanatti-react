@@ -18,17 +18,11 @@ const CartContainer = () => {
         email: ''
     });
     
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        const {name, value} = e.target
-        setBuyer(
-            prevState => ({
-                ...prevState,
-                [name]: value
-            })
-        )
-        console.log(buyer)
-
+    const handleInputChange = (e) => {
+        setBuyer({
+            ...buyer,
+            [e.target.name]: e.target.value
+        })
     }
 
     const confirmOrder = () => {
@@ -59,17 +53,6 @@ const CartContainer = () => {
     return(
         <div className='cartContainerBody'>
             <h1 className='cartContainerTitle'>Cart</h1>
-            <div className="formContainer">
-                <form className='cartForm' onSubmit={handleSubmit}>
-                <label className='cartLabel' htmlFor="name">Nombre:</label>
-                <input className='cartInput' type="text" id='name' name='name' />
-                <label className='cartLabel' htmlFor="phone">Teléfono:</label>
-                <input className='cartInput' type="text" id='phone' name='phone' />
-                <label className='cartLabel' htmlFor="email">Email:</label>
-                <input className='cartInput' type="email" id='email' name='email' />
-                <input className='buttonCart' type="submit" />
-            </form>
-            </div>
             <div className="cartContainer">
                 { itemsCart.length > 0 
                     ?
@@ -83,8 +66,25 @@ const CartContainer = () => {
                                         : 'Procesando Orden'
                                 }
                                 {/* {(itemsCart.length > 0 && !processingOrder) && <h3>Total: ${getQtyCart() * itemsCart.item.precio}</h3>} */}
-                                {(!processingOrder && itemsCart.length > 0) && <button onClick={confirmOrder} className="buttonCart">Confirmar compra</button>} 
-                                {(!processingOrder && itemsCart.length > 0) && <button onClick={clearCart} className="buttonCart">Vaciar carrito</button>}
+                                <div className="formContainer">
+                                    <form className='cartForm'>
+                                        <label className='cartLabel' htmlFor="name">Nombre:</label>
+                                        <input className='cartInput' type="text" id='name' name='name'  onChange={handleInputChange}/>
+                                        <label className='cartLabel' htmlFor="phone">Teléfono:</label>
+                                        <input className='cartInput' type="text" id='phone' name='phone' onChange={handleInputChange} />
+                                        <label className='cartLabel' htmlFor="email">Email:</label>
+                                        <input className='cartInput' type="email" id='email' name='email' onChange={handleInputChange} />
+                                    </form>
+                                </div>
+                                {(!processingOrder 
+                                    && itemsCart.length > 0 
+                                    && buyer.name !== '' 
+                                    && buyer.phone !== '' 
+                                    && buyer.email !== '') 
+                                    && <button onClick={confirmOrder} className="buttonCart">Confirmar compra</button>} 
+                                {(!processingOrder 
+                                    && itemsCart.length > 0) 
+                                    && <button onClick={clearCart} className="buttonCart">Vaciar carrito</button>}
                             </div>
                             :
                             <div>

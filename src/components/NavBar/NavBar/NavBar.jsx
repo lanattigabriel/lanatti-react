@@ -20,7 +20,6 @@ function NavBar() {
             const categories = querySnapshot.docs.map(doc => {
                 return{ id: doc.id, ...doc.data() }
             })
-            console.log(categories)
             setCategories(categories)
         })
     }, [])

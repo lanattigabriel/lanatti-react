@@ -20,9 +20,6 @@ const ItemDetail = ( {producto} ) => {
         setCantidadProd(itemRemoved)
     }
 
-    console.log(cantidadProd)
-
-
     return(
         <div className="itemDetail">
             <div className="itemDetailInner">
