@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import useCartContext from '../Context/CartContext';
+import useCartContext from '../../../context/CartContext';
 import Cart from './Cart'
 import { Link } from 'react-router-dom';
 import './cartContainer.scss'
 import { db } from '../../../services/firebase/firebase'
-import { addDoc, collection, Timestamp } from 'firebase/firestore';
+import { getDoc, addDoc, doc, collection, writeBatch, Timestamp } from 'firebase/firestore';
 
 const CartContainer = () => {
 
@@ -36,10 +36,35 @@ const CartContainer = () => {
             date: Timestamp.fromDate(new Date())
         }
 
-        addDoc(collection(db, 'orders'), objOrder).then(({ id }) => {
-            console.log(id)
-            setOrderId(id)
+        const batch = writeBatch(db);
+        const outOfStock = [];
+
+        objOrder.item.forEach((item) => {
+            getDoc(doc(db, 'productos', item.id)).then((documentSnapshot) => {
+                if(documentSnapshot.data().stock >= item.qty) {
+                    batch.update(doc(db, 'productos', documentSnapshot.id), {
+                        stock: documentSnapshot.data().stock - item.qty
+                    })
+                } else {
+                    outOfStock.push({ id: documentSnapshot.id, ...documentSnapshot.data() })
+                }
+            })
         })
+
+        if(outOfStock.length === 0) {
+            addDoc(collection(db, 'orders'), objOrder).then(({ id }) => {
+                batch.commit().then(() => {
+                    setOrderId(id)
+                }).catch((error) => {
+                    alert('Error ejecuntando la orden')
+                })
+            })
+        }
+
+        // addDoc(collection(db, 'orders'), objOrder).then(({ id }) => {
+        //     console.log(id)
+        //     setOrderId(id)
+        // })
         
         console.log(itemsCart)
         setTimeout(() => {
@@ -77,7 +102,7 @@ const CartContainer = () => {
                                     </form>
                                 </div>
                                 {(!processingOrder 
-                                    && itemsCart.length > 0 
+                                    && itemsCart.length > 0
                                     && buyer.name !== '' 
                                     && buyer.phone !== '' 
                                     && buyer.email !== '') 

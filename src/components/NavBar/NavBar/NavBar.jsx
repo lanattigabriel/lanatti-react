@@ -3,7 +3,7 @@ import './navbar.scss';
 import { Link } from 'react-router-dom';
 // CartWidget
 import CartWidget from "../CartWidget/CartWidget"
-import useCartContext from '../Context/CartContext';
+import useCartContext from '../../../context/CartContext';
 import { db } from '../../../services/firebase/firebase';
 import { collection, getDocs } from 'firebase/firestore';
 

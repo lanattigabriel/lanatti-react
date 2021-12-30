@@ -1,11 +1,11 @@
-import React from 'react'; // createContext?
+import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import './App.css';
 import NavBar from './components/NavBar/NavBar/NavBar';
 import ItemListContainer from './components/NavBar/ItemListContainer/ItemListContainer';
 import ItemDetailContainer from './components/NavBar/ItemDetailContainer/ItemDetailContainer';
 // import Cart from './components/NavBar/Cart/Cart';
-import { CartContextProvider } from './components/NavBar/Context/CartContext';
+import { CartContextProvider } from './context/CartContext';
 import CartContainer from './components/NavBar/Cart/CartContainer';
 
 
