@@ -23,8 +23,8 @@ Otra colección deberá ser creada para las categorías de los productos agregad
 ###### Rutas
 Las rutas dentro del sitio son las siguientes:
 
-'/' = catálogo de productos
-'/category/hombre' = productos de la categoría hombre
-'/category/mujer' = productos de la categoría mujer
-'/detail/:id' = detalle del producto seleccionado
-'/cart' = carrito de compras
+'/' = catálogo de productos   
+'/category/hombre' = productos de la categoría hombre   
+'/category/mujer' = productos de la categoría mujer   
+'/detail/:id' = detalle del producto seleccionado   
+'/cart' = carrito de compras   
