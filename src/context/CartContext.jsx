@@ -40,7 +40,6 @@ export const CartContextProvider = ({children}) => {
        return totalItems;
    }
 
-   // Remove Item
    const removeItem = (item) => {
        let filteredCart = itemsCart.filter( (itemInCart) => {
         return itemInCart.id !== item.id;

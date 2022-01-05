@@ -56,19 +56,13 @@ const CartContainer = () => {
                 batch.commit().then(() => {
                     setOrderId(id)
                 }).catch((error) => {
-                    alert('Error ejecuntando la orden')
+                    alert('Error ejecutando la orden')
                 })
             })
         }
-
-        // addDoc(collection(db, 'orders'), objOrder).then(({ id }) => {
-        //     console.log(id)
-        //     setOrderId(id)
-        // })
         
         console.log(itemsCart)
         setTimeout(() => {
-            // clearCart()
             setProcessingOrder(false)
         }, 8000)
 
