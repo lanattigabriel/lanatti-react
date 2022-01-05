@@ -64,7 +64,8 @@ const CartContainer = () => {
         console.log(itemsCart)
         setTimeout(() => {
             setProcessingOrder(false)
-        }, 8000)
+            clearCart()
+        }, 20000)
 
     }
 
@@ -84,7 +85,6 @@ const CartContainer = () => {
                                         itemsCart.map( item => <Cart key={item.id} item={item} /> )
                                         : 'Procesando Orden'
                                 }
-                                {/* {(itemsCart.length > 0 && !processingOrder) && <h3>Total: ${getQtyCart() * itemsCart.item.precio}</h3>} */}
                                 <div className="formContainer">
                                     <form className='cartForm'>
                                         <label className='cartLabel' htmlFor="name">Nombre:</label>
